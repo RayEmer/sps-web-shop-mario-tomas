@@ -16,7 +16,7 @@ export class AdministratorComponent implements OnInit {
 
   @ViewChild('addArticuloModal', { static: true }) addArticuloModal!: ElementRef;
   @ViewChild('notificationModal', { static: true }) notificationModal!: ElementRef;
-  notificationMessage: string = ''; // Para el mensaje de notificación
+  notificationMessage: string = '';
   constructor(
     private articuloService: ArticuloService,
     private fb: FormBuilder,
