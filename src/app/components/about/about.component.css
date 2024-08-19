@@ -1,0 +1,13 @@
+.pdf-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  object {
+    width: 80%;
+    height: 80%;
+  }
+  

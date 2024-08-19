@@ -1,0 +1,97 @@
+<div class="container mt-5">
+  <h2 class="mb-4 d-inline-block">Administrador de Artículos</h2>
+  <button class="btn btn-primary float-right" (click)="openModal()">Agregar Artículo</button>
+
+  <table class="table table-bordered mt-3">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Imagen</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let articulo of articulos">
+        <td class="text-center align-middle">
+          <img [src]="articulo.image" alt="Imagen" class="img-thumbnail">
+        </td>
+        <td class="align-middle">{{ articulo.title }}</td>
+        <td class="align-middle">{{ articulo.price | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div #addArticuloModal class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar Artículo</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="articuloForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="title">Título</label>
+              <input type="text" id="title" formControlName="title" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="price">Precio</label>
+              <input type="number" id="price" formControlName="price" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="description">Descripción</label>
+              <input type="text" id="description" formControlName="description" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="imagen">Imagen (URL)</label>
+              <input type="text" id="imagen" formControlName="image" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="rate">Calificación (Rating)</label>
+              <input type="number" id="rate" formControlName="rate" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="count">Número de Votos</label>
+              <input type="number" id="count" formControlName="count" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="category">Categoría</label>
+              <select id="category" formControlName="category" class="form-control">
+                <option value="electronics">Electrónica</option>
+                <option value="jewelery">Joyería</option>
+                <option value="men's clothing">Ropa de Hombre</option>
+                <option value="women's clothing">Ropa de Mujer</option>
+              </select>
+            </div>         
+            <button type="submit" class="btn btn-primary" [disabled]="!articuloForm.valid">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div #notificationModal class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Notificación</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeNotificationModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{ notificationMessage }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="closeNotificationModal()">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-overlay" *ngIf="loading">
+    <img src="assets/logo2.png" class="loading-logo">
+  </div>
+</div>

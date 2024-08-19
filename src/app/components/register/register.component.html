@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <img src="assets/logo.png" class="card-img-top">
+        <div class="card-body">
+          <div class="title">
+            <p>Registrarse</p>
+          </div>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstname">Nombre</label>
+                  <input type="text" formControlName="firstname" id="firstname" class="form-control" placeholder="Nombre" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastname">Apellido</label>
+                  <input type="text" formControlName="lastname" id="lastname" class="form-control" placeholder="Apellido" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="username">Nombre de usuario</label>
+                  <input type="text" formControlName="username" id="username" class="form-control" placeholder="Nombre de usuario" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" formControlName="email" id="email" class="form-control" placeholder="Email" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="password">Contraseña</label>
+                  <input type="password" formControlName="password" id="password" class="form-control" placeholder="Contraseña" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="confirmPassword">Confirmar Contraseña</label>
+                  <input type="password" formControlName="confirmPassword" id="confirmPassword" class="form-control" placeholder="Confirmar Contraseña" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="city">Ciudad</label>
+                  <input type="text" formControlName="city" id="city" class="form-control" placeholder="Ciudad" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="street">Calle</label>
+                  <input type="text" formControlName="street" id="street" class="form-control" placeholder="Calle" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="number">Numero</label>
+                  <input type="number" formControlName="number" id="number" class="form-control" placeholder="Numero" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="zipcode">Código postal</label>
+                  <input type="text" formControlName="zipcode" id="zipcode" class="form-control" placeholder="Código postal" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lat">Latitud</label>
+                  <input type="text" formControlName="lat" id="lat" class="form-control" placeholder="Latitud" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="long">Longitud</label>
+                  <input type="text" formControlName="long" id="long" class="form-control" placeholder="Longitud" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="phone">Teléfono</label>
+                  <input type="text" formControlName="phone" id="phone" class="form-control" placeholder="Teléfono" required>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-block btn-custom" [disabled]="!registerForm.valid">Registrarse</button>
+            <p class="text-center">¿Ya tienes una cuenta? <a routerLink="/login" class="text-primary">Iniciar sesión</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div #notificationModal class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Notificación</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeNotificationModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ notificationMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="closeNotificationModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay para el logo giratorio -->
+<div *ngIf="loading" class="overlay">
+  <img src="assets/logo2.png" class="spinner">
+</div>

@@ -1,0 +1,23 @@
+.carousel-item {
+  height: 350px;
+}
+
+.carousel-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-img-top {
+  height: 200px; 
+  width: auto;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px; 
+}
+
+.href-image {
+  background-color: rgb(194, 194, 204);
+}
