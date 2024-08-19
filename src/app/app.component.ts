@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private carritoService: CarritoService // Agrega el servicio de carrito
+    private carritoService: CarritoService
   ) { }
 
   ngOnInit(): void {
