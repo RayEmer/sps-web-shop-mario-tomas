@@ -19,7 +19,7 @@ export class CarritoComponent implements OnInit {
 
   constructor(
     private carritoService: CarritoService,
-    private articuloService: ArticuloService // Asegúrate de tener este servicio disponible
+    private articuloService: ArticuloService
   ) {}
 
   ngOnInit(): void {
@@ -27,10 +27,10 @@ export class CarritoComponent implements OnInit {
       if (carritos.length > 0) {
         this.carrito = carritos[0].products.map((producto: Product) => ({
           id: producto.productId,
-          title: `Producto ${producto.productId}`, // Esto se actualizará con la información real
-          price: 0, // Esto se actualizará con la información real
+          title: `Producto ${producto.productId}`,
+          price: 0,
           quantity: producto.quantity,
-          image: '', // Esto se actualizará con la información real
+          image: '',
         }));
 
         // Obtener los detalles de cada producto

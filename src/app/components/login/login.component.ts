@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
-  loading: boolean = false; // Controla el estado de la carga
+  loading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -28,17 +28,17 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      this.loading = true; // Mostrar la pantalla de carga
+      this.loading = true;
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password).subscribe(
         response => {
-          this.loading = false; // Ocultar la pantalla de carga
+          this.loading = false;
           this.errorMessage = '';
           this.authService.saveToken(response.token);
           this.router.navigate(['/index']);
         },
         error => {
-          this.loading = false; // Ocultar la pantalla de carga
+          this.loading = false;
           this.errorMessage = 'Nombre de usuario o contraseña incorrectos.';
         }
       );
